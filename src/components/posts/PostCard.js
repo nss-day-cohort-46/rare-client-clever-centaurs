@@ -15,4 +15,4 @@ const Post = ({ post }) => (
         <button className="post__detail__button">Details</button>
     </section>
 )
-export default Post
+export default Post 
