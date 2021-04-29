@@ -19,6 +19,12 @@ export const PostForm = () => {
     const history = useHistory();
 
     const handleControlledInputChange = (event) => {
-        const newPost = 
+        const newPost = { ...post }
+        newPost[event.target.id] = event.target.value
+        setPost(newPost)
+    }
+
+    const handleSavePost = () => {
+        if (parseInt(post.))
     }
 }
