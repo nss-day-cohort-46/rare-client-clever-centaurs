@@ -1,6 +1,6 @@
-import React, { createContext, useState } from "react"
+import React, { useState } from "react"
 
-export const PostContext = createContext()
+export const PostContext = React.createContext()
 
 export const PostProvider = (props) => {
     const [posts, setPosts] = useState([])
@@ -36,8 +36,3 @@ export const PostProvider = (props) => {
         </PostContext.Provider>
     )
 }
-
-
-
-
-
