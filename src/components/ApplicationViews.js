@@ -1,6 +1,11 @@
 import React from "react"
 import { Route } from "react-router-dom"
+
+import { CategoryList } from "./categories/CategoryList"
+import { CategoryProvider } from "./categories/CategoryProvider"
+
 import { PostForm } from "./posts/PostForm"
+
 import { PostList } from "./posts/PostList"
 import { PostProvider } from "./posts/PostProvider"
 // import { PostCard } from "./posts/PostCard"
@@ -19,6 +24,12 @@ export const ApplicationViews = () => {
                     <PostForm />
                 </Route>
             </PostProvider>
+
+            <CategoryProvider>
+                <Route exact path="/categories">
+                    <CategoryList />
+                </Route>
+            </CategoryProvider>
         </main>
     </>
 }
