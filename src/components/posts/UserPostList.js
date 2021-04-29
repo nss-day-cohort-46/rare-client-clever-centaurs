@@ -6,7 +6,7 @@ import { userStorageKey } from "../auth/AuthProvider"
 export const UserPostList = ({ history }) => {
     const { getPostsByUserId, posts } = useContext(PostContext)
 
-    let currentUser = parseInt(sessionStorage.getItem(userStorageKey))
+    let currentUser = parseInt(localStorage.getItem(userStorageKey))
 
     useEffect(() => {
         getPostsByUserId(currentUser)
