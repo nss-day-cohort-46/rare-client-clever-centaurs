@@ -11,6 +11,7 @@ import { TagProvider } from './tags/TagProvider'
 import { TagList } from './tags/TagList'
 import { TagForm } from './tags/TagForm'
 import { TagEditForm } from "./tags/TagEditForm"
+import { CategoryForm } from "./categories/CategoryForm"
 
 
 export const ApplicationViews = () => {
@@ -34,9 +35,17 @@ export const ApplicationViews = () => {
                     <Route exact path="/categories">
                         <CategoryList />
                     </Route>
+                    <Route exact path="/categories">
+                        <CategoryList />
+                    </Route>
+                    <Route exact path="/categories/create">
+                        <CategoryForm />
+                    </Route>
+                    <Route path="/categories/edit/:categoryId(\d+)">
+                        <CategoryForm />
+                    </Route>
                 </CategoryProvider>
             </PostProvider>
-
 
             <TagProvider>
 
