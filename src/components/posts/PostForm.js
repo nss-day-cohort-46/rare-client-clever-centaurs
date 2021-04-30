@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from 'react-router-dom';
 import { PostContext } from "./PostProvider.js"
-// import {CategoryContext} from "../categories/CategoryProvider.js"
+import { CategoryContext } from "../categories/CategoryProvider.js"
 
 
 export const PostForm = () => {
     const { getPosts, getPostById, addPost, updatePost } = useContext(PostContext)
-    // const { categories, getCategories } = useContext(CategoryContext)
+    const { categories, getCategories } = useContext(CategoryContext)
+    const currentUser = parseInt(localStorage.getItem("rare_user_id"))
 
     const [post, setPost] = useState({
         user_id: 0,
@@ -43,7 +44,7 @@ export const PostForm = () => {
                 .then(() => history.push(`/posts/details/${post.id}`))
         } else {
             addPost({
-                user_id: parseInt(post.user_id),
+                user_id: currentUser,
                 category_id: parseInt(post.category_id),
                 title: post.title,
                 publication_date: post.publication_date,
@@ -55,20 +56,20 @@ export const PostForm = () => {
     }
 
     useEffect(() => {
-        getPosts()
-            // .then(getCategories)
-            .then(() => {
-                if (postId) {
-                    getPostById(postId)
-                        .then(post => {
-                            setPost(post)
-                            setIsLoading(false)
-                        })
-                } else {
-                    setIsLoading(false)
-                }
-            })
+        getCategories()
     }, [])
+
+    useEffect(() => {
+        if (postId) {
+            getPostById(postId)
+                .then(post => {
+                    setPost(post)
+                    setIsLoading(false)
+                })
+        } else {
+            setIsLoading(false)
+        }
+    }, [postId])
 
     return (
         <form className="postForm">
@@ -77,22 +78,22 @@ export const PostForm = () => {
             <h2>{postId ? "Edit Post" : "Add Post"}</h2>
 
             {/* Select category */}
-            {/* <fieldset>
+            <fieldset>
                 <div className="form-group">
                     <label htmlFor="location">Category: </label>
                     <select value={post.category_id} id="category_id" className="form-control" onChange={handleControlledInputChange}>
-                        <option value="0">Select a category</option> */}
-            {/* map thru categories array */}
-            {/* {categories.map(c => (
+                        <option value="0">Select a category</option>
+                        {/* map thru categories array */}
+                        {categories.map(c => (
                             // for each category, create an option HTML element
-                            // <option key={c.id} value={c.id}> */}
-            {/* name of category as input */}
-            {/* {c.name}
+                            <option key={c.id} value={c.id}>
+                                {/* name of category as input */}
+                                {c.label}
                             </option>
                         ))}
                     </select>
                 </div>
-            </fieldset> */}
+            </fieldset>
 
             {/* Date input */}
             <fieldset>

@@ -22,29 +22,30 @@ export const ApplicationViews = () => {
         }}>
 
             <PostProvider>
-                <Route exact path="/posts">
-                    <PostList />
-                </Route>
-                <Route exact path="/posts/create">
-                    <PostForm />
-                </Route>
+                <CategoryProvider>
+                    <Route exact path="/posts">
+                        <PostList />
+                    </Route>
+                    <Route exact path="/posts/create">
+                        <PostForm />
+                    </Route>
+                    <Route exact path="/myPosts">
+                        <UserPostList />
+                    </Route>
+                    <Route exact path="/categories">
+                        <CategoryList />
+                    </Route>
+                    <Route exact path="/categories">
+                        <CategoryList />
+                    </Route>
+                    <Route exact path="/categories/create">
+                        <CategoryForm />
+                    </Route>
+                    <Route path="/categories/edit/:categoryId(\d+)">
+                        <CategoryForm />
+                    </Route>
+                </CategoryProvider>
             </PostProvider>
-            <PostProvider>
-                <Route exact path="/myPosts">
-                    <UserPostList />
-                </Route>
-            </PostProvider>
-            <CategoryProvider>
-                <Route exact path="/categories">
-                    <CategoryList />
-                </Route>
-                <Route exact path="/categories/create">
-                    <CategoryForm />
-                </Route>
-                <Route path="/categories/edit/:categoryId(\d+)">
-                    <CategoryForm />
-                </Route>
-            </CategoryProvider>
 
             <TagProvider>
 
