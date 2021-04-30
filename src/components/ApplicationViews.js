@@ -40,7 +40,9 @@ export const ApplicationViews = () => {
             </CategoryProvider>
 
             <TagProvider>
+
                 <Route exact path="/tags" render={
+
                     props => <TagForm {...props} />
                 } />
                 <Route exact path="/tags" render={

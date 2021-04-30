@@ -45,7 +45,7 @@ export const TagProvider = (props) => {
     return (
         <TagContext.Provider value={{
             tags, getTags, addTag, deleteTag, updateTag
-        }}>
+      }}>
             {props.children}
         </TagContext.Provider>
     )
