@@ -10,7 +10,7 @@ export const PostForm = () => {
     const currentUser = parseInt(localStorage.getItem("rare_user_id"))
 
     const [post, setPost] = useState({
-        user_id: currentUser,
+        user_id: 0,
         category_id: 0,
         title: "",
         publication_date: "",
@@ -44,7 +44,7 @@ export const PostForm = () => {
                 .then(() => history.push(`/posts/details/${post.id}`))
         } else {
             addPost({
-                user_id: parseInt(post.user_id),
+                user_id: currentUser,
                 category_id: parseInt(post.category_id),
                 title: post.title,
                 publication_date: post.publication_date,
