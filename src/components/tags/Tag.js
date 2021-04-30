@@ -29,6 +29,10 @@ useEffect(() =>{
             <button  variant="primary" size="sm" onClick={() => { 
          DeleteTag()  
      }}>delete</button>
+
+     <button  variant="primary" size="sm" onClick={() => { 
+         history.push(`/editForm/${tag.id}`)  
+     }}>Edit</button>
         </section>
     </>
     )
