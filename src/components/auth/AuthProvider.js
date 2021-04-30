@@ -23,3 +23,4 @@ export const ProfileProvider = (props) => {
         </ProfileContext.Provider>
     )
 }
+export const userStorageKey = "rare_user_id"
