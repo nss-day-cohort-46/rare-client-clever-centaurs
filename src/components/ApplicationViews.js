@@ -11,6 +11,7 @@ import { TagProvider } from './tags/TagProvider'
 import { TagList } from './tags/TagList'
 import { TagForm } from './tags/TagForm'
 import { TagEditForm } from "./tags/TagEditForm"
+import { CategoryForm } from "./categories/CategoryForm"
 
 
 export const ApplicationViews = () => {
@@ -19,7 +20,7 @@ export const ApplicationViews = () => {
             margin: "5rem 2rem",
             lineHeight: "1.75rem"
         }}>
-            
+
             <PostProvider>
                 <Route exact path="/posts">
                     <PostList />
@@ -29,13 +30,19 @@ export const ApplicationViews = () => {
                 </Route>
             </PostProvider>
             <PostProvider>
-                <Route exact path="/myPosts"> 
+                <Route exact path="/myPosts">
                     <UserPostList />
                 </Route>
             </PostProvider>
             <CategoryProvider>
                 <Route exact path="/categories">
                     <CategoryList />
+                </Route>
+                <Route exact path="/categories/create">
+                    <CategoryForm />
+                </Route>
+                <Route path="/categories/edit/:categoryId(\d+)">
+                    <CategoryForm />
                 </Route>
             </CategoryProvider>
 
