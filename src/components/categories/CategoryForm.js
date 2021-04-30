@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
+import { CategoryContext } from "./CategoryProvider"
 
 
 export const CategoryForm = () => {
-    const { } = useContext()
+    const { addCategory, getCategories, getCategoryById, updateCategory } = useContext(CategoryContext)
 
     const [category, setCategory] = useState({
         label: ""
@@ -41,7 +42,17 @@ export const CategoryForm = () => {
     }
 
     useEffect(() => {
-
+        getCategories().then(() => {
+            if (categoryId) {
+                getCategoryById(categoryId)
+                    .then(category => {
+                        setCategory(category)
+                        setIsLoading(false)
+                    })
+            } else {
+                setIsLoading(false)
+            }
+        })
     }, [])
 
 

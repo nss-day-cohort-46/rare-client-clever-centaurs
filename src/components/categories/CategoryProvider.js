@@ -16,10 +16,32 @@ export const CategoryProvider = (props) => {
             .then(res => res.json())
     }
 
+    const addCategory = categoryObj => {
+        return fetch("http://localhost:8088/categories", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(categoryObj)
+        })
+            .then(getCategories)
+    }
+
+    const updateCategory = category => {
+        return (`http://localhost:8088/categories/${category.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(category)
+        })
+            .then(getCategories)
+    }
+
 
     return (
         <CategoryContext.Provider value={{
-            categories, getCategories, getCategoryById
+            categories, getCategories, getCategoryById, addCategory, updateCategory
         }}>
             {props.children}
         </CategoryContext.Provider>
