@@ -88,7 +88,7 @@ export const PostForm = () => {
                             // for each category, create an option HTML element
                             <option key={c.id} value={c.id}>
                                 {/* name of category as input */}
-                                {c.name}
+                                {c.label}
                             </option>
                         ))}
                     </select>
