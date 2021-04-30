@@ -9,6 +9,7 @@ import { PostProvider } from "./posts/PostProvider"
 import { TagProvider } from './tags/TagProvider'
 import { TagList } from './tags/TagList'
 import { TagForm } from './tags/TagForm'
+import { TagEditForm } from "./tags/TagEditForm"
 
 
 export const ApplicationViews = () => {
@@ -34,11 +35,14 @@ export const ApplicationViews = () => {
             </CategoryProvider>
 
             <TagProvider>
-            <Route exact path="/tags" render={
+                <Route exact path="/tags" render={
                     props => <TagForm {...props} />
                 } />
                 <Route exact path="/tags" render={
                     props => <TagList {...props} />
+                } />
+                <Route exact path="/editForm/:tagId(\d+)" render={
+                    props => <TagEditForm {...props} />
                 } />
 
             </TagProvider>
