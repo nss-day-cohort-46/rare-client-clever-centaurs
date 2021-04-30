@@ -8,6 +8,7 @@ import { PostForm } from "./posts/PostForm"
 
 import { PostList } from "./posts/PostList"
 import { PostProvider } from "./posts/PostProvider"
+import { UserPostList } from "./posts/UserPostList"
 // import { PostCard } from "./posts/PostCard"
 
 export const ApplicationViews = () => {
@@ -24,7 +25,11 @@ export const ApplicationViews = () => {
                     <PostForm />
                 </Route>
             </PostProvider>
-
+            <PostProvider>
+                <Route exact path="/myPosts"> 
+                    <UserPostList />
+                </Route>
+            </PostProvider>
             <CategoryProvider>
                 <Route exact path="/categories">
                     <CategoryList />
