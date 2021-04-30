@@ -19,25 +19,24 @@ export const ApplicationViews = () => {
             margin: "5rem 2rem",
             lineHeight: "1.75rem"
         }}>
-            
+
             <PostProvider>
-                <Route exact path="/posts">
-                    <PostList />
-                </Route>
-                <Route exact path="/posts/create">
-                    <PostForm />
-                </Route>
+                <CategoryProvider>
+                    <Route exact path="/posts">
+                        <PostList />
+                    </Route>
+                    <Route exact path="/posts/create">
+                        <PostForm />
+                    </Route>
+                    <Route exact path="/myPosts">
+                        <UserPostList />
+                    </Route>
+                    <Route exact path="/categories">
+                        <CategoryList />
+                    </Route>
+                </CategoryProvider>
             </PostProvider>
-            <PostProvider>
-                <Route exact path="/myPosts"> 
-                    <UserPostList />
-                </Route>
-            </PostProvider>
-            <CategoryProvider>
-                <Route exact path="/categories">
-                    <CategoryList />
-                </Route>
-            </CategoryProvider>
+
 
             <TagProvider>
 
